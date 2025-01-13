@@ -1,24 +1,25 @@
 import maskpass
 
-def Auth():
+def Dashboard(user):
     while True:
-        UsernameAttempt = input("Username:")
-        PasswordAttempt =  maskpass.askpass()
-        user = f"{UsernameAttempt}.txt"
-        userlog = open(user, "r")
-        password = userlog.readline()
-        if PasswordAttempt == password:
-            print("Welcome Sir")
-            break
+        user = user
+        x = input(("What would you like to do?\n (1) Change Password\n (2) Change Username\n (3) Add User\n (4) Logout\n"))
+        if x == "1":
+            change_password(user)
+        elif x == "2":
+            change_username(user)
+        elif x == "3":
+            add_user(user)
         else:
-            print("Password is wrong!")
-            print(password) #Debug
+            exit()
+    
 
-def Dashboard():
-    userlog = open("user.txt", "r")
-    user = userlog.read()
+
+def add_user(user):
+    x = 5 
+
+def change_password(user):
     Passwordfile = open(user, "r")
-    print(Passwordfile.read())
     PassChange = input("Would you like to change your password? (y/n)")
     PassChange.lower
     session = 0
@@ -28,8 +29,6 @@ def Dashboard():
             PasswordAttempt =  maskpass.askpass()
             Passwordfile = open(user, "r")
             PasswordKey = Passwordfile.read()
-            print(PasswordKey)
-            print(PasswordAttempt)
             if PasswordAttempt == PasswordKey:
                 Passwordfile = open(user, "w")
                 Passwordfile.write(input("New Password:"))
@@ -41,12 +40,5 @@ def Dashboard():
     else:
         exit()
 
-
-def add_user():
-    x = 5 
-
-def change_password():
-    x = 5
-
-def change_username():
+def change_username(user):
     x = 5
