@@ -1,12 +1,8 @@
-from components import *
+#main.py
+#imports
+import components
 
-#Auth Password System
-#Variables
-#Function
-Auth()
-Dashboard()
+components.Auth()
 
-
-
-
+components.Dashboard()
 
