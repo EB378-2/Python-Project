@@ -3,6 +3,9 @@ import os
 
 
 def Dashboard(user):
+    """
+    User Dashboard from where the user can complete 1 of 4 actions.
+    """
     while True:
         user = user
         x = input(("What would you like to do?\n (1) Change Password\n (2) Change Username\n (3) Add User\n (4) Logout\n"))
@@ -17,6 +20,9 @@ def Dashboard(user):
     
 
 def change_password(user):
+    """
+    A function to allow users to change the password assosiated with their account.
+    """
     Passwordfile = open(user, "r")
     PassChange = input("Would you like to change your password? (y/n)")
     PassChange.lower
@@ -39,6 +45,9 @@ def change_password(user):
         exit()
 
 def add_user():
+    """
+    A function for users to add more users
+    """
     new_user = input("New User Username:")
     while True:
         new_user_password = input("Make a password:")
@@ -54,6 +63,9 @@ def add_user():
 
 
 def change_username(user):
+    """
+    A function to allow users to change their usenames.
+    """
     userlog = open(user, "r")
     password = userlog.readline()
     PasswordAttempt =  maskpass.askpass()
