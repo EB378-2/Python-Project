@@ -15,7 +15,6 @@ while True:
         break
     else:
         print("Password is wrong!")
-        print(password) #Debug
 
-components.Dashboard()
+components.Dashboard(user)
 

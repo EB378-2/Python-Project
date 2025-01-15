@@ -1,4 +1,6 @@
 import maskpass
+import os
+
 
 def Dashboard(user):
     while True:
@@ -9,14 +11,10 @@ def Dashboard(user):
         elif x == "2":
             change_username(user)
         elif x == "3":
-            add_user(user)
+            add_user()
         else:
             exit()
     
-
-
-def add_user(user):
-    x = 5 
 
 def change_password(user):
     Passwordfile = open(user, "r")
@@ -40,5 +38,32 @@ def change_password(user):
     else:
         exit()
 
+def add_user():
+    new_user = input("New User Username:")
+    while True:
+        new_user_password = input("Make a password:")
+        new_user_password_check = input("Confirm password:")
+        if new_user_password == new_user_password_check:
+            print("Great, New user set")
+            new_user_file = f"{new_user}.txt"
+            new_user_file_opened = open(new_user_file, "w")
+            new_user_file_opened.write(new_user_password)
+            break
+        else:
+            print("Error: Password does not match. Try again.")
+
+
 def change_username(user):
-    x = 5
+    userlog = open(user, "r")
+    password = userlog.readline()
+    PasswordAttempt =  maskpass.askpass()
+    if PasswordAttempt == password:
+        new_Username = input("Enter new username:")
+        os.remove(user)
+        new_user_file = f"{new_Username}.txt"
+        new_user_file_opened = open(new_user_file, "w")
+        new_user_file_opened.write(password)
+        print("Username changed, Logging out...")
+        exit()
+    else:
+        print("Password is wrong!")
