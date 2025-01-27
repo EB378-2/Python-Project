@@ -36,6 +36,7 @@ def change_password(user):
             if PasswordAttempt == PasswordKey:
                 Passwordfile = open(user, "w")
                 Passwordfile.write(input("New Password:"))
+                Passwordfile.close()
                 break
             else:
                 print("Password is wrong! Try again")
@@ -57,6 +58,7 @@ def add_user():
             new_user_file = f"{new_user}.txt"
             new_user_file_opened = open(new_user_file, "w")
             new_user_file_opened.write(new_user_password)
+            new_user_file_opened.close()
             break
         else:
             print("Error: Password does not match. Try again.")
@@ -70,6 +72,7 @@ def change_username(user):
     password = userlog.readline()
     PasswordAttempt =  maskpass.askpass()
     if PasswordAttempt == password:
+        userlog.close()
         new_Username = input("Enter new username:")
         os.remove(user)
         new_user_file = f"{new_Username}.txt"
@@ -78,4 +81,5 @@ def change_username(user):
         print("Username changed, Logging out...")
         exit()
     else:
+        userlog.close()
         print("Password is wrong!")

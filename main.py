@@ -12,9 +12,11 @@ while True:
     password = userlog.readline()
     if PasswordAttempt == password:
         print("Welcome Sir")
+        userlog.close()
         break
     else:
         print("Password is wrong!")
+        userlog.close()
 
 components.Dashboard(user)
 
